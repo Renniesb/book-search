@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Baby Genius Book</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="content">
+      <h1>Books Search - Baby Genius</h1>
+      <ul>        
+      </ul>
+    </div>
+    <script>
+      function handleResponse(response) {
+      for (var i = 0; i < response.items.length; i++) {
+        var item = response.items[i];
+        // in production code, item.text should have the HTML entities escaped.
+        $("#content ul").append('<li>'+ item.volumeInfo.title + '</li> </br>');
+      }
+    }
+    </script>
+    <script src="https://www.googleapis.com/books/v1/volumes?q=baby+genius&callback=handleResponse"></script>
+  </body>
+</html>
